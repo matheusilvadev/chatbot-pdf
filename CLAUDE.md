@@ -53,3 +53,33 @@ Antes de qualquer implementação: explique o que vai fazer em português,
 liste os arquivos que vai criar ou modificar, e só execute após minha confirmação.
 Se sugerir uma função, escreva o teste antes do código.
 Nunca instale dependências novas sem me perguntar antes.
+
+## Lições aprendidas — erros já cometidos
+
+### Mock de função direta com Jest (Dia 3)
+
+**O erro:**
+Ao mockar o módulo `pdf-parse`, o agente usou:
+```js
+jest.mock('pdf-parse');
+```
+Isso causou `TypeError: pdfParse.mockResolvedValue is not a function`
+porque o Jest auto-mocka módulos de forma diferente dependendo
+do que eles exportam.
+
+**Por que aconteceu:**
+- `pdf-parse` exporta uma **função direta** — `module.exports = function(...)`
+- `jest.mock('modulo')` sem factory cria um auto-mock que não é um `jest.fn()`
+- Só funciona automaticamente com classes e objetos, não com funções diretas
+
+**A correção:**
+```js
+jest.mock('pdf-parse', () => jest.fn());
+```
+Passar uma factory explícita garante que o módulo vira um `jest.fn()`
+com todos os métodos de mock disponíveis (`mockResolvedValue`, `mockRejectedValue`, etc.)
+
+**Regra para o futuro:**
+Sempre que mockar um módulo que exporta uma função direta,
+usar a factory explícita `() => jest.fn()`.
+Reservar `jest.mock('modulo')` sem factory apenas para classes e objetos.
