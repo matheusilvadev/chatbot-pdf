@@ -83,3 +83,10 @@ com todos os métodos de mock disponíveis (`mockResolvedValue`, `mockRejectedVa
 Sempre que mockar um módulo que exporta uma função direta,
 usar a factory explícita `() => jest.fn()`.
 Reservar `jest.mock('modulo')` sem factory apenas para classes e objetos.
+
+### Versão do pdf-parse (Dia 4)
+**O erro:** pdf-parse v2 tem campo exports restritivo que impede importar
+caminhos internos como ./lib/pdf-parse.js — causa ERR_PACKAGE_PATH_NOT_EXPORTED.
+**A correção:** usar pdf-parse@1.1.1 que não tem essa restrição.
+**Regra:** verificar downloads semanais no npmjs.com antes de instalar.
+Versões amplamente usadas são mais estáveis que versões recentes com poucos usuários.

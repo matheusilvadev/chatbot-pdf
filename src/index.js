@@ -5,6 +5,9 @@ const app = express();
 
 app.use(express.json());
 
+const chatRoutes = require('./routes/chat');
+app.use('/api', chatRoutes);
+
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });
