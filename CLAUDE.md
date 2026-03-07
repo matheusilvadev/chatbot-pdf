@@ -107,6 +107,12 @@ não valores artificiais de teste.
 **Regra:** jest.mock global no topo do arquivo sempre tem precedência
 sobre jest.doMock dentro de isolateModules.
 
+### Express 5 — wildcard de rota mudou (Dia 6)
+**O erro:** app.get('*', ...) lança PathError no Express 5.
+**A correção:** usar app.get('*splat', ...) 
+**Regra:** Express 5 mudou a sintaxe de wildcards — '*' virou '*splat'.
+Ao copiar exemplos de rotas do Express 4, sempre verificar compatibilidade.
+
 ## Dívidas Técnicas Conhecidas
 
 Dívidas identificadas e adiadas conscientemente. Resolver antes de escalar ou ir para produção real.
