@@ -106,3 +106,43 @@ que importa de verdade. Testes devem cobrir comportamento real,
 não valores artificiais de teste.
 **Regra:** jest.mock global no topo do arquivo sempre tem precedência
 sobre jest.doMock dentro de isolateModules.
+
+## Dívidas Técnicas Conhecidas
+
+Dívidas identificadas e adiadas conscientemente. Resolver antes de escalar ou ir para produção real.
+
+### DT-01 — `context` global entre usuários
+**Arquivo:** `src/routes/chat.js:8`
+Estado compartilhado entre todas as requisições — bug de concorrência se houver múltiplos usuários simultâneos. O PDF de um usuário pode vazar para outro.
+**Solução:** sessões com `express-session` + Redis para isolar contexto por usuário.
+**Quando resolver:** antes de expor a aplicação a mais de um usuário.
+
+### DT-04 — `new OpenAI()` instanciado a cada chamada
+**Arquivo:** `src/services/openaiService.js:8`
+Cria um novo cliente a cada pergunta em vez de reutilizar uma instância singleton. Desperdício leve sem impacto funcional.
+**Solução:** mover `const client = new OpenAI(...)` para o escopo do módulo.
+
+### DT-06 — Sem verificação de `choices[0]` nulo
+**Arquivo:** `src/services/openaiService.js:20`
+`response.choices[0].message.content` lança `TypeError` se a API retornar `finish_reason: 'content_filter'` com `content: null`.
+**Solução:** `response.choices[0]?.message?.content ?? 'Sem resposta disponível'`
+
+### DT-08 — `OPENAI_API_KEY` exportada desnecessariamente
+**Arquivo:** `src/config/env.js:15`
+A chave é exportada mas nenhum módulo a importa de `env.js` — lida diretamente de `process.env`. Risco de vazamento se algo serializar o objeto de configuração em logs.
+**Solução:** remover `OPENAI_API_KEY` do `module.exports`.
+
+### DT-13 — `docker-compose.yml` monta o projeto inteiro como volume
+**Arquivo:** `docker-compose.yml:6`
+`volumes: - .:/app` é adequado para desenvolvimento (hot reload), mas perigoso em produção pois expõe arquivos do host ao container.
+**Solução:** criar `docker-compose.prod.yml` sem o bind mount antes de qualquer deploy real.
+
+### DT-16 — Sem campo `engines` no `package.json`
+**Arquivo:** `package.json`
+Sem `"engines": {"node": ">=20"}`, não há aviso se a aplicação for executada em versão incompatível do Node.
+**Solução:** adicionar o campo `engines` ao `package.json`.
+
+### DT-17 — Express 5 não documentado
+**Arquivo:** `package.json:18`
+O projeto usa Express 5 (`^5.2.1`), que trata async errors de forma diferente do Express 4. Copiar exemplos do Express 4 pode causar comportamento inesperado.
+**Solução:** documentar no README que o projeto usa Express 5 e as principais diferenças relevantes.
