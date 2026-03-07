@@ -1,3 +1,4 @@
+const fs = require('fs/promises');
 const express = require('express');
 const upload = require('../middlewares/upload');
 const { extractTextFromPDF } = require('../services/pdfService');
@@ -27,6 +28,10 @@ router.post('/upload', upload.single('file'), async (req, res, next) => {
     res.json({ success: true, message: 'PDF processado' });
   } catch (err) {
     next(err);
+  } finally {
+    if (req.file?.path) {
+      await fs.unlink(req.file.path).catch(() => {});
+    }
   }
 });
 

@@ -1,8 +1,9 @@
+const crypto = require('crypto');
 const multer = require('multer');
 
 const storage = multer.diskStorage({
   destination: 'uploads/',
-  filename: (req, file, cb) => cb(null, file.originalname),
+  filename: (req, file, cb) => cb(null, crypto.randomUUID() + '.pdf'),
 });
 
 const fileFilter = (req, file, cb) => {

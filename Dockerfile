@@ -2,14 +2,14 @@ FROM node:20-alpine
 
 WORKDIR /app
 
-RUN apk add --no-cache git curl
-
 COPY package*.json ./
 
-RUN npm install
+RUN npm ci --omit=dev
 
 COPY . .
 
 EXPOSE 3000
+
+USER node
 
 CMD ["node", "src/index.js"]

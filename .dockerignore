@@ -2,3 +2,7 @@ node_modules
 .env
 *.log
 .git
+uploads/
+coverage/
+tests/
+docker-compose.yml
