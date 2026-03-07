@@ -1,25 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1772830929667" clover="3.2.0">
-  <project timestamp="1772830929669" name="All files">
-    <metrics statements="13" coveredstatements="13" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2" elements="19" coveredelements="19" complexity="0" loc="13" ncloc="13" packages="1" files="2" classes="2"/>
-    <file name="openaiService.js" path="/app/src/services/openaiService.js">
-      <metrics statements="7" coveredstatements="7" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
-      <line num="1" count="1" type="stmt"/>
-      <line num="4" count="6" type="cond" truecount="4" falsecount="0"/>
-      <line num="5" count="4" type="stmt"/>
-      <line num="8" count="2" type="stmt"/>
-      <line num="10" count="2" type="stmt"/>
-      <line num="20" count="2" type="stmt"/>
-      <line num="23" count="1" type="stmt"/>
-    </file>
-    <file name="pdfService.js" path="/app/src/services/pdfService.js">
-      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <line num="1" count="1" type="stmt"/>
-      <line num="2" count="1" type="stmt"/>
-      <line num="5" count="4" type="stmt"/>
-      <line num="6" count="3" type="stmt"/>
-      <line num="7" count="2" type="stmt"/>
-      <line num="10" count="1" type="stmt"/>
-    </file>
+<coverage generated="1772885989629" clover="3.2.0">
+  <project timestamp="1772885989631" name="All files">
+    <metrics statements="58" coveredstatements="58" conditionals="27" coveredconditionals="26" methods="6" coveredmethods="6" elements="91" coveredelements="90" complexity="0" loc="58" ncloc="58" packages="3" files="4" classes="4"/>
+    <package name="middlewares">
+      <metrics statements="9" coveredstatements="9" conditionals="10" coveredconditionals="9" methods="2" coveredmethods="2"/>
+      <file name="errorHandler.js" path="/app/src/middlewares/errorHandler.js">
+        <metrics statements="9" coveredstatements="9" conditionals="10" coveredconditionals="9" methods="2" coveredmethods="2"/>
+        <line num="2" count="14" type="cond" truecount="2" falsecount="0"/>
+        <line num="3" count="8" type="cond" truecount="4" falsecount="0"/>
+        <line num="4" count="6" type="stmt"/>
+        <line num="9" count="14" type="stmt"/>
+        <line num="10" count="14" type="stmt"/>
+        <line num="15" count="14" type="cond" truecount="2" falsecount="0"/>
+        <line num="16" count="13" type="stmt"/>
+        <line num="19" count="14" type="stmt"/>
+        <line num="22" count="10" type="stmt"/>
+      </file>
+    </package>
+    <package name="routes">
+      <metrics statements="35" coveredstatements="35" conditionals="13" coveredconditionals="13" methods="2" coveredmethods="2"/>
+      <file name="chat.js" path="/app/src/routes/chat.js">
+        <metrics statements="35" coveredstatements="35" conditionals="13" coveredconditionals="13" methods="2" coveredmethods="2"/>
+        <line num="1" count="9" type="stmt"/>
+        <line num="2" count="9" type="stmt"/>
+        <line num="3" count="9" type="stmt"/>
+        <line num="4" count="9" type="stmt"/>
+        <line num="6" count="9" type="stmt"/>
+        <line num="8" count="9" type="stmt"/>
+        <line num="10" count="9" type="stmt"/>
+        <line num="11" count="6" type="stmt"/>
+        <line num="12" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="18" count="5" type="stmt"/>
+        <line num="20" count="4" type="cond" truecount="4" falsecount="0"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="26" count="3" type="stmt"/>
+        <line num="27" count="3" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="33" count="9" type="stmt"/>
+        <line num="34" count="5" type="stmt"/>
+        <line num="35" count="5" type="stmt"/>
+        <line num="37" count="5" type="cond" truecount="5" falsecount="0"/>
+        <line num="38" count="2" type="stmt"/>
+        <line num="39" count="2" type="stmt"/>
+        <line num="40" count="2" type="stmt"/>
+        <line num="43" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
+        <line num="49" count="2" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+        <line num="52" count="1" type="stmt"/>
+        <line num="56" count="9" type="stmt"/>
+      </file>
+    </package>
+    <package name="services">
+      <metrics statements="14" coveredstatements="14" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
+      <file name="openaiService.js" path="/app/src/services/openaiService.js">
+        <metrics statements="7" coveredstatements="7" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="4" count="6" type="cond" truecount="4" falsecount="0"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+      </file>
+      <file name="pdfService.js" path="/app/src/services/pdfService.js">
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="1" count="2" type="stmt"/>
+        <line num="2" count="2" type="stmt"/>
+        <line num="3" count="2" type="stmt"/>
+        <line num="6" count="6" type="stmt"/>
+        <line num="7" count="5" type="stmt"/>
+        <line num="8" count="4" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+      </file>
+    </package>
   </project>
 </coverage>

@@ -90,3 +90,19 @@ caminhos internos como ./lib/pdf-parse.js — causa ERR_PACKAGE_PATH_NOT_EXPORTE
 **A correção:** usar pdf-parse@1.1.1 que não tem essa restrição.
 **Regra:** verificar downloads semanais no npmjs.com antes de instalar.
 Versões amplamente usadas são mais estáveis que versões recentes com poucos usuários.
+
+### jest.doMock dentro de isolateModules vs jest.mock global (Dia 5)
+**O problema:** tentar usar jest.doMock dentro de isolateModules para
+sobrepor um jest.mock global do mesmo arquivo não funciona —
+o mock global tem precedência sempre.
+**O que foi tentado:**
+jest.isolateModules(() => {
+  jest.doMock('../src/config/env', () => ({ PDF_MAX_CHARS: 10 }));
+  // não funciona se jest.mock global já existe no topo do arquivo
+});
+**A solução:** abandonar o isolamento de módulo e testar com o valor
+real do limite (PDF_MAX_CHARS = 100.000 chars), que é o comportamento
+que importa de verdade. Testes devem cobrir comportamento real,
+não valores artificiais de teste.
+**Regra:** jest.mock global no topo do arquivo sempre tem precedência
+sobre jest.doMock dentro de isolateModules.
