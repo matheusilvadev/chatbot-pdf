@@ -113,6 +113,19 @@ sobre jest.doMock dentro de isolateModules.
 **Regra:** Express 5 mudou a sintaxe de wildcards — '*' virou '*splat'.
 Ao copiar exemplos de rotas do Express 4, sempre verificar compatibilidade.
 
+### ESLint v9+ abandonou .eslintrc.json (Dia 7)
+**O erro:** ESLint v9+ não suporta .eslintrc.json — causa exit code 2.
+**A correção:** usar eslint.config.js com flat config e instalar @eslint/js separadamente.
+**Regra:** ao instalar ESLint, verificar a versão. v9+ exige flat config (eslint.config.js).
+Exemplos antigos com .eslintrc.json não funcionam mais.
+```
+
+Agora adiciona o lint no CI também. Manda pro agente:
+```
+Adicione o step de lint no .github/workflows/ci.yml 
+para rodar após os testes.
+Me mostre o que vai alterar antes de executar.
+
 ## Dívidas Técnicas Conhecidas
 
 Dívidas identificadas e adiadas conscientemente. Resolver antes de escalar ou ir para produção real.
