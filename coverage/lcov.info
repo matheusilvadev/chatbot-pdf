@@ -1,5 +1,5 @@
 TN:
-SF:src/middlewares/errorHandler.js
+SF:src\middlewares\errorHandler.js
 FN:1,resolveStatus
 FN:8,errorHandler
 FNF:2
@@ -12,7 +12,7 @@ DA:4,6
 DA:9,14
 DA:10,14
 DA:15,14
-DA:16,13
+DA:16,1
 DA:19,14
 DA:22,10
 LF:9
@@ -25,13 +25,13 @@ BRDA:3,2,0,8
 BRDA:3,2,1,7
 BRDA:11,3,0,14
 BRDA:11,3,1,0
-BRDA:15,4,0,13
-BRDA:15,4,1,1
+BRDA:15,4,0,1
+BRDA:15,4,1,13
 BRF:10
 BRH:9
 end_of_record
 TN:
-SF:src/routes/chat.js
+SF:src\routes\chat.js
 FN:11,(anonymous_0)
 FN:33,(anonymous_1)
 FN:38,(anonymous_2)
@@ -46,7 +46,6 @@ DA:3,9
 DA:4,9
 DA:5,9
 DA:7,9
-DA:9,9
 DA:11,9
 DA:12,6
 DA:13,6
@@ -78,8 +77,8 @@ DA:54,2
 DA:55,1
 DA:57,1
 DA:61,9
-LF:38
-LH:38
+LF:37
+LH:37
 BRDA:13,0,0,1
 BRDA:13,0,1,5
 BRDA:21,1,0,1
@@ -95,11 +94,13 @@ BRDA:42,5,1,4
 BRDA:42,5,2,4
 BRDA:48,6,0,1
 BRDA:48,6,1,2
-BRF:15
-BRH:15
+BRDA:48,7,0,3
+BRDA:48,7,1,3
+BRF:17
+BRH:17
 end_of_record
 TN:
-SF:src/services/openaiService.js
+SF:src\services\openaiService.js
 FN:3,askOpenAI
 FNF:1
 FNH:1
@@ -121,7 +122,7 @@ BRF:4
 BRH:4
 end_of_record
 TN:
-SF:src/services/pdfService.js
+SF:src\services\pdfService.js
 FN:5,extractTextFromPDF
 FNF:1
 FNH:1

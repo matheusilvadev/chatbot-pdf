@@ -6,7 +6,7 @@ const { askOpenAI } = require('../services/openaiService');
 
 const router = express.Router();
 
-let context = null;
+// O contexto global foi removido. Agora utilizamos req.session.context para isolamento.
 
 router.post('/upload', upload.single('file'), async (req, res, next) => {
   try {
@@ -24,7 +24,7 @@ router.post('/upload', upload.single('file'), async (req, res, next) => {
       return next(err);
     }
 
-    context = text;
+    req.session.context = text;
     res.json({ success: true, message: 'PDF processado' });
   } catch (err) {
     next(err);
@@ -45,13 +45,13 @@ router.post('/ask', async (req, res, next) => {
       return next(err);
     }
 
-    if (!context) {
+    if (!req.session || !req.session.context) {
       const err = new Error('Nenhum PDF carregado. Faça upload antes de perguntar');
       err.type = 'validation';
       return next(err);
     }
 
-    const answer = await askOpenAI(context, question);
+    const answer = await askOpenAI(req.session.context, question);
     res.json({ answer });
   } catch (err) {
     next(err);

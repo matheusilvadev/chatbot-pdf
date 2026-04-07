@@ -14,11 +14,14 @@
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
+    "connect-redis": "^9.0.0",
     "dotenv": "^17.3.1",
     "express": "^5.2.1",
+    "express-session": "^1.19.0",
     "multer": "^2.1.1",
     "openai": "^6.25.0",
-    "pdf-parse": "^1.1.1"
+    "pdf-parse": "^1.1.1",
+    "redis": "^5.11.0"
   },
   "jest": {
     "testEnvironment": "node",
@@ -32,6 +35,7 @@
     "eslint": "^10.0.3",
     "jest": "^30.2.0",
     "nodemon": "^3.1.14",
+    "redis-mock": "^0.56.3",
     "supertest": "^7.2.2"
   }
 }

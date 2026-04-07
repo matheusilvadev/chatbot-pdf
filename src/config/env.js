@@ -1,4 +1,4 @@
-const required = ['OPENAI_API_KEY'];
+const required = ['OPENAI_API_KEY', 'REDIS_URL', 'SESSION_SECRET'];
 
 for (const key of required) {
   if (!process.env[key]) {
@@ -15,4 +15,6 @@ module.exports = {
   OPENAI_API_KEY: process.env.OPENAI_API_KEY,
   PORT: process.env.PORT || 3000,
   PDF_MAX_CHARS,
+  REDIS_URL: process.env.REDIS_URL,
+  SESSION_SECRET: process.env.SESSION_SECRET,
 };
